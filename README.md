@@ -1,3 +1,16 @@
+## ILHAM SAMSUL ARIFIN
+## JUDUL
+SISTEM INFORMASI LAPORAN ANGGOTA TAGANA
+## DESKRIPSI
+SISTEM INFORMASI INI MERUPAKAN SISTEM INFORMASI LAPORAN KEGIATAN SELAMA PER SATU BULAN ANGGOTA TAGANA KABUPATEN SUBANG
+<br>
+TERDAPAT 2 ROLE YAITU: 1. ADMIN, 2.ANGGOTA
+<br>
+FITUR-FITUR YANG TERDAPAT PADA SISTEM INFORMASI INI CUKUP SEDERHANA DIANTARANYA:
+1. LOGIN/LOGOUT
+2. KELOLA USER
+3. KELOLA LAPORAN
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">

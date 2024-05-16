@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="./assets/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="./assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    {{-- DataTables --}}
+    <link rel="stylesheet" href="./assets/DataTables/datatables.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -33,9 +35,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <div class="tab-content">
-                @yield('content')
-            </div>
+            @yield('content')
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
@@ -64,7 +64,10 @@
     <script src="./assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="./assets/dist/js/adminlte.js"></script>
-    <!-- AdminLTE for demo purposes -->
+    <!-- DataTable-->
+    <script src="./assets/DataTables/datatables.min.js"></script>
+
+    @yield('script')
 
 </body>
 

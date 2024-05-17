@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\KategoriBencana;
+use App\Http\Controllers\Laporan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
@@ -9,3 +11,7 @@ Route::get('/dashboard', function () {
 Route::get('/laporanview', function () {
     return view('pages.laporanview.index');
 });
+
+Route::resource('laporan', Laporan::class);
+
+Route::resource('kategoribencana', KategoriBencana::class);

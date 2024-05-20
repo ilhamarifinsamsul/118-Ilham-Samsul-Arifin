@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tb_laporan', function (Blueprint $table) {
-            $table->id("id_laporan");
-            $table->integer("id_kategori");
-            $table->string("no_niat", 50);
-            $table->text("deskripsi_kegiatan");
-            $table->dateTime("tanggal");
-            $table->string("gambar", 255);
+            $table->id();
+            $table->string('description');
+            $table->dateTime('date');
+            $table->string('picture');
+            $table->foreignId('kategori_id')->nullable()->constrained('tb_kategori')->onUpdate('SET NULL')->onDelete('CASCADE');
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
         });
     }
 

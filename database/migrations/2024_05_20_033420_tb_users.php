@@ -12,14 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tb_users', function (Blueprint $table) {
-            $table->id("id_user");
-            $table->integer("id_role");
-            $table->string("username", 100);
-            $table->string("password", 255);
-            $table->string("nama_lengkap", 100);
-            $table->string("email", 100);
-            $table->string("no_hp", 16);
-            $table->string("jenis_kelamin", 50);
+            $table->id();
+            $table->string('name');
+            $table->string('username')->unique();
+            $table->string('email')->unique();
+            $table->foreignId('role_id')->nullable()->constrained('tb_role')->onUpdate('SET NULL')->onDelete('CASCADE');
+
+            $table->string('password');
+            $table->string('no_niat')->nullable();
+            $table->string('phone');
         });
     }
 
@@ -28,7 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-
         Schema::dropIfExists('tb_users');
     }
 };

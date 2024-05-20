@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tb_role', function (Blueprint $table) {
-            $table->id("id_role");
-            $table->string("nama_role", 100);
+            $table->id();
+            $table->string("name", 100);
         });
     }
 

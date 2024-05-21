@@ -37,10 +37,6 @@
 
 <body class="hold-transition login-page">
 
-
-
-
-
     <div class="login-box">
         <!-- /.login-logo -->
         <h4>PROJECT Laporan</h4>
@@ -49,14 +45,25 @@
                 <a href="" class="h1"></a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Silahkan input Username & Password</p>
+                <p class="login-box-msg">Silahkan input Email & Password</p>
 
-                <form action="" method="post">
+                <form action="{{ route('auth.proses') }}" method="post" role="form">
 
                     @csrf
 
+                    @if (session()->get('error'))
+                        <div class="alert text-white alert-danger alert-dismissible fade show" role="alert">
+                            <span class="alert-text">
+                                {{ session()->get('error') }}
+                            </span>
+                            <button type="button" class="btn-info" data-bs-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" required name="username" placeholder="Username"
+                        <input type="text" class="form-control" required name="username" placeholder="Email"
                             autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">

@@ -23,6 +23,6 @@ class RoleSeeder extends Seeder
 
         ];
 
-        DB::table('tb_role')->insert($data);
+        DB::table('role')->insert($data);
     }
 }

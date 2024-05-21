@@ -16,9 +16,8 @@ return new class extends Migration
             $table->string('description');
             $table->dateTime('date');
             $table->string('picture');
-            $table->foreignId('kategori_id')->nullable()->constrained('tb_kategori')->onUpdate('SET NULL')->onDelete('CASCADE');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
+            $table->foreignId('kategori_id')->nullable()->constrained('tb_kategori_bencana')->onUpdate('SET NULL')->onDelete('CASCADE');
+            $table->timestamps();
         });
     }
 

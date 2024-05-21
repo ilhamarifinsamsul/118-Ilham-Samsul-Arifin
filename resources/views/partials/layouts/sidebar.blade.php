@@ -34,7 +34,7 @@
 
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="userview" class="nav-link {{ request()->path() == '/userview' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         Kelola User
@@ -43,7 +43,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="kategoriview" class="nav-link {{ request()->path() == '/kategori' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-list"></i>
                     <p>
                         Kategori

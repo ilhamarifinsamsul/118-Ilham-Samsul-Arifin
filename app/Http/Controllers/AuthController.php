@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 
+
 class AuthController extends Controller
 {
     public function index()
@@ -16,7 +17,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $user = User::where('email', $request->username)->orWhere('username', $request->usernmae)->first();
+        $user = User::where("email", $request->username)->orWhere("username", $request->username)->first();
 
         if ($user == null) {
             return redirect()->back()->with('error', 'User Tidak ditemukan');

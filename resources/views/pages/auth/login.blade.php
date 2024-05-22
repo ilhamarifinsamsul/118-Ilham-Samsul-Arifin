@@ -47,7 +47,7 @@
             <div class="card-body">
                 <p class="login-box-msg">Silahkan input Email & Password</p>
 
-                <form action="{{ route('auth.proses') }}" method="post" role="form">
+                <form action="{{ route('auth.process') }}" method="post" role="form">
 
                     @csrf
 

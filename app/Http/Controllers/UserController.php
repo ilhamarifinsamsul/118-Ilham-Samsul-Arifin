@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -11,7 +14,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+
+        return view('pages.userview.index', [
+            "users" => $users
+        ]);
     }
 
     /**
@@ -19,7 +26,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+
+        return view('pages.userview.create', [
+            'roles' => $roles
+        ]);
     }
 
     /**
@@ -27,7 +38,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $payload = $request->all();
+
+        $rules = [
+            'name' => 'required|min:50',
+            'username' => 'required|unique:users,username',
+            'email'   => 'required|unique:App\Models\User,email|email',
+            'password'   => 'required|min:5',
+            'role_id'   => 'required',
+        ];
+
+        $request->validate($rules);
+
+        $user = new User();
+        $user->name  = $payload['name'];
     }
 
     /**

@@ -25,23 +25,24 @@ Route::get('/login', function () {
     return view('pages.auth.login');
 })->name('auth.login');
 
-// Route::controller(UserController::class)->middleware(["authenticate:admin"])->prefix("userview")->name("users.")->group(function () {
-//     Route::get('/', 'index')->name('index')->middleware(Authenticate::class);
-//     Route::get('/create', 'UserController@create')->name('create');
-//     Route::get('/{id}', 'UserController@show')->name('show');
-//     Route::get('/{id}/edit', 'UserController@edit')->name('edit');
-//     Route::get('/', 'UserController@store')->name('store');
-//     Route::put('/{id}', 'UserController@update')->name('update');
-//     Route::delete('/{id}', 'UserController@destroy')->name('destroy');
-// });
+Route::controller(UserController::class)->middleware(["authenticate:1"])->prefix("userview")->name("users.")->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::get('/{id}', 'show')->name('show');
+    Route::get('/{id}/edit', 'edit')->name('edit');
+    Route::post('/', 'store')->name('store');
+    Route::put('/{id}', 'update')->name('update');
+    Route::delete('/{id}', 'destroy')->name('destroy');
+});
 
 Route::get('/dashboard', function () {
+    dd(session()->all());
     return view('pages.dashboard.index');
 })->middleware(Authenticate::class)->name('dashboard.index');;
 
-Route::get('/userview', function () {
-    return view('pages.userview.index');
-});
+// Route::get('/userview', function () {
+//     return view('pages.userview.index');
+// });
 
 Route::get('/kategoriview', function () {
     return view('pages.kategoriview.index');

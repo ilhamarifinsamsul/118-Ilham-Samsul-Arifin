@@ -34,7 +34,8 @@
 
             </li>
             <li class="nav-item">
-                <a href="userview" class="nav-link {{ request()->path() == '/userview' ? 'active' : '' }}">
+                <a href="{{ route('users.index') }}"
+                    class="nav-link {{ request()->path() == '/userview' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         Kelola User

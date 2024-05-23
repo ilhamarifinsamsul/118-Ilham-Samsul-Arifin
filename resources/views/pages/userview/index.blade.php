@@ -29,7 +29,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
-                    <a href="" class="btn btn-primary btn-sm mb-2">New</a>
+                    <a href="" class="btn btn-primary btn-sm mb-2"><i class="fas fa-plus"></i>Input Users</a>
                     <div class="card">
                         <div class="card-header">
                             Kelola User
@@ -41,31 +41,30 @@
                                         <th>No</th>
                                         <th>Name</th>
                                         <th>Username</th>
-                                        <th>Role</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a class="btn btn-warning btn-sm mb-2" href="">
-                                                <i class="fas fa-pen-fancy"></i></a>
-                                            <form action="" method='post' enctype='multipart/form-data'>
-                                                <input type='hidden' name='_method' value='DELETE' />
-                                                <!-- GET, POST, PUT, PATCH, DELETE-->
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="button" onclick="" class="btn btn-danger btn-sm mb-2"><i
-                                                        class="fas fa-trash-alt"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
-
+                                    @foreach ($users as $u)
+                                        <tr>
+                                            <td></td>
+                                            <td>{{ $u['name'] }}</td>
+                                            <td>{{ $u['username'] }}</td>
+                                            <td>
+                                                <a class="btn btn-warning btn-sm mb-2" href="">
+                                                    <i class="fas fa-pen-fancy"></i></a>
+                                                <form action="" method='post' enctype='multipart/form-data'>
+                                                    <input type='hidden' name='_method' value='DELETE' />
+                                                    <!-- GET, POST, PUT, PATCH, DELETE-->
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="button" onclick=""
+                                                        class="btn btn-danger btn-sm mb-2"><i
+                                                            class="fas fa-trash-alt"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

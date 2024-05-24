@@ -26,10 +26,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::all();
+        $role = Role::all();
 
         return view('pages.userview.create', [
-            'roles' => $roles
+            "role" => $role
         ]);
     }
 
@@ -52,6 +52,16 @@ class UserController extends Controller
 
         $user = new User();
         $user->name  = $payload['name'];
+        $user->username = $payload['username'];
+        $user->email = $payload['email'];
+        $user->role_id = $payload['role_id'];
+        $user->password = Hash::make($payload['password']);
+        $user->no_niat = $payload['no_niat'];
+        $user->phone = $payload['phone'];
+
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 
     /**

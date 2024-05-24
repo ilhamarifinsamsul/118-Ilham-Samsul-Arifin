@@ -36,7 +36,6 @@ Route::controller(UserController::class)->middleware(["authenticate:1"])->prefix
 });
 
 Route::get('/dashboard', function () {
-    dd(session()->all());
     return view('pages.dashboard.index');
 })->middleware(Authenticate::class)->name('dashboard.index');;
 

@@ -29,7 +29,8 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
-                    <a href="" class="btn btn-primary btn-sm mb-2"><i class="fas fa-plus"></i>Input Users</a>
+                    <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm mb-2"><i
+                            class="fas fa-plus"></i>Input Users</a>
                     <div class="card">
                         <div class="card-header">
                             Kelola User

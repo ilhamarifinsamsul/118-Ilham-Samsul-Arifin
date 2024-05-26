@@ -72,10 +72,24 @@
                                     <input type="text"
                                         class="form-control @error('email') is-invalid
                                     @enderror"
-                                        id="email" name="email" required placeholder="Nama lengkap">
+                                        id="email" name="email" required placeholder="Email">
                                 </div>
 
                                 @error('email')
+                                    <p class="text-danger">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
+
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="text"
+                                        class="form-control @error('password') is-invalid
+                                    @enderror"
+                                        id="password" name="password" required placeholder="Password">
+                                </div>
+
+                                @error('password')
                                     <p class="text-danger">
                                         {{ $message }}
                                     </p>

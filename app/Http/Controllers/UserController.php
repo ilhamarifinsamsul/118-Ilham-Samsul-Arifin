@@ -41,10 +41,10 @@ class UserController extends Controller
         $payload = $request->all();
 
         $rules = [
-            'name' => 'required|min:50',
+            'name' => 'required|max:50',
             'username' => 'required|unique:users,username',
             'email'   => 'required|unique:App\Models\User,email|email',
-            'password'   => 'required|min:5',
+            'password'   => 'required|max:5',
             'role_id'   => 'required',
         ];
 
@@ -69,7 +69,11 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = User::find($id);
+
+        return view('pages.userview.show', [
+            'data' => $data
+        ]);
     }
 
     /**

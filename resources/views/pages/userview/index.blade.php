@@ -52,9 +52,12 @@
                                             <td>{{ $u['name'] }}</td>
                                             <td>{{ $u['username'] }}</td>
                                             <td>
+                                                <a href="{{ route('users.show', $u['id']) }}"
+                                                    class="btn btn-success btn-sm mb-2"><i class="fas fa-eye"></i></a>
                                                 <a class="btn btn-warning btn-sm mb-2" href="">
                                                     <i class="fas fa-pen-fancy"></i></a>
-                                                <form action="" method='post' enctype='multipart/form-data'>
+                                                <form action="{{ route('users.destroy', $u['id']) }}" method='post'
+                                                    enctype='multipart/form-data'>
                                                     <input type='hidden' name='_method' value='DELETE' />
                                                     <!-- GET, POST, PUT, PATCH, DELETE-->
                                                     @csrf

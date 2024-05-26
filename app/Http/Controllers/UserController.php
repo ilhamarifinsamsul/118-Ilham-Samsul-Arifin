@@ -81,7 +81,13 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = User::find($id);
+        $role = Role::all();
+
+        return view('pages.userview.edit', [
+            'data' => $data,
+            'role' => $role
+        ]);
     }
 
     /**
@@ -89,7 +95,44 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $payload = $request->all();
+        $user = User::find($id);
+
+        $rules = [
+            'name' => 'required|max:50',
+            'role_id' => 'required'
+        ];
+
+        if ($payload['password'] != null) {
+            $rules['password'] = 'required|max:5';
+            $user->password = Hash::make($payload['password']);
+        }
+
+        if ($payload['email'] != $user->email) {
+            $rules['email'] = 'required|unique:App\Models\User,email|email';
+            $email = $payload['email'];
+        } else {
+            $email = $user->email;
+        }
+
+        if ($payload['username'] != $user->username) {
+            $rules['username'] = 'required|unique:users,username';
+            $username = $payload['username'];
+        } else {
+            $username = $user->username;
+        }
+
+        $user->name = $payload['name'];
+        $user->username = $username;
+
+        $user->role_id = $payload['role_id'];
+        $user->email = $email;
+        $user->no_niat = $payload['no_niat'];
+        $user->phone = $payload['phone'];
+
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -97,6 +140,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        User::destroy($id);
+        return redirect()->route('users.index');
     }
 }

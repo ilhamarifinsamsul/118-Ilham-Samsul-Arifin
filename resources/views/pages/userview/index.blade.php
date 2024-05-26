@@ -46,15 +46,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                        $a = 1;
+                                    @endphp
                                     @foreach ($users as $u)
                                         <tr>
-                                            <td></td>
+                                            <td>{{ $a++ }}</td>
                                             <td>{{ $u['name'] }}</td>
                                             <td>{{ $u['username'] }}</td>
                                             <td>
                                                 <a href="{{ route('users.show', $u['id']) }}"
                                                     class="btn btn-success btn-sm mb-2"><i class="fas fa-eye"></i></a>
-                                                <a class="btn btn-warning btn-sm mb-2" href="">
+                                                <a class="btn btn-warning btn-sm mb-2"
+                                                    href="{{ route('users.edit', $u['id']) }}">
                                                     <i class="fas fa-pen-fancy"></i></a>
                                                 <form action="{{ route('users.destroy', $u['id']) }}" method='post'
                                                     enctype='multipart/form-data'>

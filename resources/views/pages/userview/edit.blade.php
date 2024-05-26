@@ -36,7 +36,7 @@
                     <div class="col-md-5 mb-2">
                         <div class="card">
                             <div class="card-header">
-                                New User
+                                Edit User
                             </div>
                             <div class="card-body">
 
@@ -45,7 +45,8 @@
                                     <input type="text"
                                         class="form-control @error('name') is-invalid
                                     @enderror"
-                                        id="name" name="name" required placeholder="Name">
+                                        id="name" name="name" value="{{ old('name', $data['name']) }}"
+                                        placeholder="Name">
                                 </div>
 
                                 @error('name')
@@ -59,7 +60,8 @@
                                     <input type="text"
                                         class="form-control @error('username') is-invalid
                                     @enderror"
-                                        id="username" name="username" required placeholder="Username">
+                                        id="username" name="username" value="{{ old('username', $data['username']) }}"
+                                        placeholder="Username">
                                 </div>
 
                                 @error('username')
@@ -73,7 +75,8 @@
                                     <input type="text"
                                         class="form-control @error('email') is-invalid
                                     @enderror"
-                                        id="email" name="email" required placeholder="Email">
+                                        id="email" name="email" value="{{ old('email', $data['email']) }}"
+                                        placeholder="Email">
                                 </div>
 
                                 @error('email')
@@ -87,7 +90,7 @@
                                     <input type="text"
                                         class="form-control @error('password') is-invalid
                                     @enderror"
-                                        id="password" name="password" required placeholder="Password">
+                                        id="password" name="password" placeholder="Password">
                                 </div>
 
                                 @error('password')
@@ -119,14 +122,14 @@
 
                                 <div class="form-group">
                                     <label for="no_niat">No Niat</label>
-                                    <input type="text" class="form-control" id="no_niat" name="no_niat" required
-                                        placeholder="No Niat">
+                                    <input type="text" class="form-control" id="no_niat" name="no_niat"
+                                        value="{{ old('no_niat', $data['no_niat']) }}" placeholder="No Niat">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input type="text" class="form-control" id="phone" name="phone" required
-                                        placeholder="Phone">
+                                    <input type="text" class="form-control" id="phone" name="phone"
+                                        value="{{ old('phone', $data['phone']) }}" placeholder="Phone">
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>

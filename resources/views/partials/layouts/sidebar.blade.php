@@ -44,7 +44,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="kategoriview" class="nav-link {{ request()->path() == '/kategori' ? 'active' : '' }}">
+                <a href="{{ route('kategoriview.index') }}"
+                    class="nav-link {{ request()->path() == '/kategori' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-list"></i>
                     <p>
                         Kategori

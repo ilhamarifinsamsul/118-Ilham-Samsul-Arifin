@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Return_;
 
-class Laporan extends Controller
+class KategoriController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $data = Kategori::all();
+
+        return view('pages.kategoriview.index', [
+            'kategori' => $data
+        ]);
     }
 
     /**
@@ -19,7 +25,7 @@ class Laporan extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.kategoriview.create');
     }
 
     /**
@@ -27,23 +33,33 @@ class Laporan extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'nama_kategori' => 'required'
+        ];
+
+        $request->validate($rules);
+
+        Kategori::create([
+            'nama_kategori' => $request->nama_kategori
+        ]);
+
+        return redirect()->route('kategoriview.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $data = Kategori::find($id);
+
+        return view('pages.kategoriview.edit', [
+            'data' => $data
+        ]);
     }
 
     /**

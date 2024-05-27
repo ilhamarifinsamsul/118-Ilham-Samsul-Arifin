@@ -11,6 +11,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">Detail User</h1>
+
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -27,13 +28,17 @@
 
     <!-- Main content -->
     <section class="content">
+
         <div class="container-fluid">
+            <a href="{{ route('users.index') }}" class="btn btn-primary btn-sm mb-2"><i
+                    class="left fas fa-angle-left"></i>Back</a>
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-md-5 mb-2">
                     <div class="card">
                         <div class="card-header">
                             Edit User
+
                         </div>
                         <div class="card-body">
 

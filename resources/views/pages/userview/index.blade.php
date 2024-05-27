@@ -60,14 +60,10 @@
                                                 <a class="btn btn-warning btn-sm mb-2"
                                                     href="{{ route('users.edit', $u['id']) }}">
                                                     <i class="fas fa-pen-fancy"></i></a>
-                                                <form action="{{ route('users.destroy', $u['id']) }}" method='post'
-                                                    enctype='multipart/form-data'>
-                                                    <input type='hidden' name='_method' value='DELETE' />
-                                                    <!-- GET, POST, PUT, PATCH, DELETE-->
+                                                <form action="{{ route('users.destroy', $u['id']) }}" method='post'>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="button" onclick=""
-                                                        class="btn btn-danger btn-sm mb-2"><i
+                                                    <button type="submit" class="btn btn-danger btn-sm mb-2"><i
                                                             class="fas fa-trash-alt"></i></button>
                                                 </form>
                                             </td>

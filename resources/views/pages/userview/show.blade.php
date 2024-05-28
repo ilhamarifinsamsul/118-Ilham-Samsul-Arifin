@@ -34,7 +34,7 @@
                     class="left fas fa-angle-left"></i>Back</a>
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-md-5 mb-2">
+                <div class="col-md-12 mb-2">
                     <div class="card">
                         <div class="card-header">
                             Edit User

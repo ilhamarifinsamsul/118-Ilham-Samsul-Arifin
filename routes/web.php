@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KategoriBencana;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\Laporan;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
@@ -45,11 +46,12 @@ Route::get('/dashboard', function () {
 // });
 
 Route::resource('kategoriview', KategoriController::class)->middleware(['authenticate:1']);
+Route::resource('laporanview', LaporanController::class)->middleware(['authenticate:1']);
 
 // Route::get('/kategoriview', function () {
 //     return view('pages.kategoriview.index');
 // });
 
-Route::get('/laporanview', function () {
-    return view('pages.laporanview.index');
-});
+// Route::get('/laporanview', function () {
+//     return view('pages.laporanview.index');
+// });

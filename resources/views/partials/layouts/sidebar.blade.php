@@ -54,7 +54,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="laporanview" class="nav-link {{ request()->path() == '/laporanview' ? 'active' : '' }}">
+                <a href="{{ route('laporanview.index') }}"
+                    class="nav-link {{ request()->path() == '/laporanview' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-chart-pie"></i>
                     <p>
                         Laporan Anggota

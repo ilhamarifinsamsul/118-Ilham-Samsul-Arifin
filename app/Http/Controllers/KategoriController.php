@@ -67,7 +67,19 @@ class KategoriController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = Kategori::findOrFail($id);
+
+        $rules = [
+            'nama_kategori' => 'required'
+        ];
+
+        $request->validate($rules);
+
+        $data->update([
+            'nama_kategori' => $request->nama_kategori
+        ]);
+
+        return redirect()->route('kategoriview.index');
     }
 
     /**
@@ -75,6 +87,10 @@ class KategoriController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = Kategori::findOrFail($id);
+
+        $data->delete();
+
+        return redirect()->route('kategoriview.index');
     }
 }

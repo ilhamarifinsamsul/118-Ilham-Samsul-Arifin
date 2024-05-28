@@ -56,16 +56,14 @@
                                             <td>{{ $a++ }}</td>
                                             <td>{{ $k['nama_kategori'] }}</td>
                                             <td>
-                                                <a class="btn btn-warning btn-sm mb-2" href="">
+                                                <a class="btn btn-warning btn-sm mb-2"
+                                                    href="{{ route('kategoriview.edit', $k['id']) }}">
                                                     <i class="fas fa-pen-fancy"></i></a>
-                                                <form action="" method='post' enctype='multipart/form-data'>
-
-                                                    <input type='hidden' name='_method' value='DELETE' />
-                                                    <!-- GET, POST, PUT, PATCH, DELETE-->
+                                                <form action="{{ route('kategoriview.destroy', $k['id']) }}" method='post'
+                                                    enctype='multipart/form-data'>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="button" onclick="deleteTombol(this)"
-                                                        class="btn btn-danger btn-sm mb-2"><i
+                                                    <button type="submit" class="btn btn-danger btn-sm mb-2"><i
                                                             class="fas fa-trash-alt"></i></button>
                                                 </form>
                                             </td>

@@ -11,7 +11,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item">Kelola Barang</li>
+                        <li class="breadcrumb-item">Kelola Laporan</li>
                         <li class="breadcrumb-item">List</li>
                     </ol>
                 </div>
@@ -27,7 +27,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
-                    <a href="#" class="btn btn-primary btn-sm mb-2">New</a>
+                    <a href="{{ route('laporanview.create') }}" class="btn btn-primary btn-sm mb-2">Input Laporan</a>
                     <div class="card">
                         <div class="card-header">
                             List
@@ -37,23 +37,28 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Barang</th>
-                                        <th>Nama Kategori</th>
-                                        <th>Stok</th>
-                                        <th>Nama Satuan</th>
-                                        <th>Kondisi</th>
+                                        <th>Deskripsi Kegiatan</th>
+                                        <th>Dokumentasi</th>
+                                        <th>Kategori</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Sampo</td>
-                                        <td>Daging</td>
-                                        <td>2</td>
-                                        <td>kg</td>
-                                        <td>baik</td>
                                         <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <a class="btn btn-warning btn-sm mb-2" href="">
+                                                <i class="fas fa-pen-fancy"></i></a>
+                                            <form action="" method='post' enctype='multipart/form-data'>
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm mb-2"><i
+                                                        class="fas fa-trash-alt"></i></button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -53,9 +53,9 @@
                                             <td>{{ $a++ }}</td>
                                             <td>{{ $d['description'] }}</td>
                                             <td>{{ $d['date'] }}</td>
-                                            <td><img src="{{ assets('assets/upload/laporan' . $d['picture']) }}"
-                                                    alt="" width="100px"></td>
-                                            <td>{{ $d['nama_kategori'] }}</td>
+                                            <td><img src="{{ asset('/assets/upload/laporan/' . $d['picture']) }}"
+                                                    alt="" width="120px"></td>
+                                            <td>{{ $d->kategori->nama_kategori }}</td>
 
                                             <td>
                                                 <a class="btn btn-warning btn-sm mb-2" href="">

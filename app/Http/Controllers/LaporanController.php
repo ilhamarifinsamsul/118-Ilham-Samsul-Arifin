@@ -65,6 +65,8 @@ class LaporanController extends Controller
 
         $laporan->kategori_id = $payload['kategori_id'];
 
+        $laporan->save();
+
 
         return redirect()->route('laporanview.index');
     }

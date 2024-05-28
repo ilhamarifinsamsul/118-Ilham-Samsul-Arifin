@@ -38,28 +38,37 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Deskripsi Kegiatan</th>
+                                        <th>Tanggal</th>
                                         <th>Dokumentasi</th>
                                         <th>Kategori</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a class="btn btn-warning btn-sm mb-2" href="">
-                                                <i class="fas fa-pen-fancy"></i></a>
-                                            <form action="" method='post' enctype='multipart/form-data'>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm mb-2"><i
-                                                        class="fas fa-trash-alt"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                    @php
+                                        $a = 1;
+                                    @endphp
+                                    @foreach ($laporan as $d)
+                                        <tr>
+                                            <td>{{ $a++ }}</td>
+                                            <td>{{ $d['description'] }}</td>
+                                            <td>{{ $d['date'] }}</td>
+                                            <td><img src="{{ assets('assets/upload/laporan' . $d['picture']) }}"
+                                                    alt="" width="100px"></td>
+                                            <td>{{ $d['nama_kategori'] }}</td>
+
+                                            <td>
+                                                <a class="btn btn-warning btn-sm mb-2" href="">
+                                                    <i class="fas fa-pen-fancy"></i></a>
+                                                <form action="" method='post' enctype='multipart/form-data'>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm mb-2"><i
+                                                            class="fas fa-trash-alt"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

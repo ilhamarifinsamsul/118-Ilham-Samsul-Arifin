@@ -37,7 +37,36 @@ class LaporanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $payload = $request->all();
+
+        $rules = [
+            'description' => 'required',
+            'date' => 'required',
+            'kategori_id' => 'required',
+        ];
+
+        if ($request->hasFile('picture')) {
+            $rules['picture'] = 'required|image|mimes:jpeg,jpg,png|max:2048';
+        }
+
+        $request->validate($rules);
+
+        $laporan = new Laporan();
+
+        $laporan->description = $payload['description'];
+        $laporan->date = $payload['date'];
+
+        if ($request->hasFile('picture')) {
+            $image = $request->file('picture');
+            $imageName = time() . "-" . $image->hashName();
+            $image->move("assets/upload/laporan", $imageName);
+            $laporan->picture = $imageName;
+        }
+
+        $laporan->kategori_id = $payload['kategori_id'];
+
+
+        return redirect()->route('laporanview.index');
     }
 
     /**

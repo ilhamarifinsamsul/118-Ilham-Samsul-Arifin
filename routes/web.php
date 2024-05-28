@@ -46,6 +46,8 @@ Route::get('/dashboard', function () {
 // });
 
 Route::resource('kategoriview', KategoriController::class)->middleware(['authenticate:1']);
+
+
 Route::resource('laporanview', LaporanController::class)->middleware(['authenticate:1']);
 
 // Route::get('/kategoriview', function () {

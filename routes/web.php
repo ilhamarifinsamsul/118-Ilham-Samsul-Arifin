@@ -50,6 +50,7 @@ Route::resource('kategoriview', KategoriController::class)->middleware(['authent
 
 Route::resource('laporanview', LaporanController::class)->middleware(['authenticate:1']);
 
+
 // Route::get('/kategoriview', function () {
 //     return view('pages.kategoriview.index');
 // });

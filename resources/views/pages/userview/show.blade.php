@@ -1,6 +1,6 @@
 @extends('partials.layouts.app')
 
-@section('title', 'Users - Laporan');
+@section('title', 'Users - Laporan')
 
 @section('content')
 
@@ -37,7 +37,7 @@
                 <div class="col-md-12 mb-2">
                     <div class="card">
                         <div class="card-header">
-                            Edit User
+                            Detail User
 
                         </div>
                         <div class="card-body">

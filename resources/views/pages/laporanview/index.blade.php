@@ -58,9 +58,13 @@
                                             <td>{{ $d->kategori->nama_kategori }}</td>
 
                                             <td>
-                                                <a class="btn btn-warning btn-sm mb-2" href="">
+                                                <a href="{{ route('laporanview.show', $d['id']) }}"
+                                                    class="btn btn-success btn-sm mb-2"><i class="fas fa-eye"></i></a>
+                                                <a class="btn btn-warning btn-sm mb-2"
+                                                    href="{{ route('laporanview.edit', $d['id']) }}">
                                                     <i class="fas fa-pen-fancy"></i></a>
-                                                <form action="" method='post' enctype='multipart/form-data'>
+                                                <form action="{{ route('laporanview.destroy', $d['id']) }}" method='post'
+                                                    enctype='multipart/form-data'>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm mb-2"><i

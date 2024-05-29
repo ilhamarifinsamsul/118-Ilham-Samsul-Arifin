@@ -10,13 +10,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Input Laporan</h1>
+                    <h1 class="m-0">Edit Laporan</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item">Kelola Laporan</li>
-                        <li class="breadcrumb-item active">Input Laporan</li>
+                        <li class="breadcrumb-item active">Edit Laporan</li>
                     </ol>
                 </div>
                 <!-- /.col -->
@@ -29,13 +29,14 @@
     <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
-            <form action="{{ route('laporanview.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('laporanview.update', $data['id']) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-12 mb-2">
                         <div class="card">
                             <div class="card-header">
-                                Input Laporan
+                                Edit Laporan
                             </div>
                             <div class="card-body">
 
@@ -44,7 +45,8 @@
                                     <input type="text"
                                         class="form-control @error('description') is-invalid
                                     @enderror"
-                                        id="description" name="description" placeholder="Deskripsi Kegiatan">
+                                        id="description" name="description"
+                                        value="{{ old('description', $data['description']) }}">
                                 </div>
 
                                 @error('description')
@@ -58,7 +60,7 @@
                                     <input type="date"
                                         class="form-control @error('date') is-invalid
                                     @enderror"
-                                        id="date" name="date" value="{{ date('Y-m-d') }}" placeholder="Tanggal">
+                                        id="date" name="date" value="{{ date('Y-m-d') }}">
                                 </div>
 
                                 @error('date')
@@ -67,27 +69,31 @@
                                     </p>
                                 @enderror
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="picture">Dokumentasi</label>
-                                    <input type="file"
-                                        class="form-control @error('picture') is-invalid
-                                    @enderror"
-                                        id="picture" name="picture" required placeholder="Dokumentasi">
+                                    <img src="{{ asset('/assets/upload/laporan/' . $data['picture']) }}" alt=""
+                                        width="120px">
+                                    <input type="file" class="form-control" id="picture" name="picture">
                                 </div>
 
                                 @error('picture')
                                     <p class="text-danger">
                                         {{ $message }}
                                     </p>
-                                @enderror
+                                @enderror --}}
 
                                 <div class="form-group">
                                     <label for="kategori_id">Kategori Bencana</label>
-                                    <select name="kategori_id" id="kategori_id" required
+                                    <select name="kategori_id" id="kategori_id"
                                         class="form-control @error('kategori_id') is-invalid
                                     @enderror">
                                         @foreach ($kategori as $k)
-                                            <option value="{{ $k->id }}">{{ $k->nama_kategori }}</option>
+                                            @if ($k->id == $data['kategori_id'])
+                                                <option selected value="{{ $k->id }}">{{ $k->nama_kategori }}
+                                                </option>
+                                            @else
+                                                <option value="{{ $k->id }}">{{ $k->nama_kategori }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>

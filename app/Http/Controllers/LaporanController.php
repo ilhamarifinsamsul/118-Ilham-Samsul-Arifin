@@ -42,7 +42,7 @@ class LaporanController extends Controller
         $rules = [
             'description' => 'required',
             'date' => 'required',
-            'kategori_id' => 'required',
+            'kategori_id' => 'required'
         ];
 
         if ($request->hasFile('picture')) {
@@ -76,7 +76,11 @@ class LaporanController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Laporan::find($id);
+
+        return view('pages.laporanview.show', [
+            'data' => $data
+        ]);
     }
 
     /**
@@ -84,7 +88,13 @@ class LaporanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Laporan::find($id);
+        $kategori = Kategori::all();
+
+        return view('pages.laporanview.edit', [
+            'data' => $data,
+            'kategori' => $kategori
+        ]);
     }
 
     /**
@@ -92,7 +102,24 @@ class LaporanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $payload = $request->all();
+        $laporan = Laporan::find($id);
+
+        $rules = [
+            'description' => 'required',
+            'kategori_id' => 'required'
+        ];
+
+        $request->validate($rules);
+
+        $laporan->description = $payload['description'];
+        $laporan->date = $payload['date'];
+
+        $laporan->kategori_id = $payload['kategori_id'];
+
+        $laporan->save();
+
+        return redirect()->route('laporanview.index');
     }
 
     /**
@@ -100,6 +127,10 @@ class LaporanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = Laporan::findOrFail($id);
+
+        $data->delete();
+
+        return redirect()->route('laporanview.index');
     }
 }

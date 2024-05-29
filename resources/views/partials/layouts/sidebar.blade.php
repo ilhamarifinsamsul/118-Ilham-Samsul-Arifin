@@ -33,47 +33,51 @@
                 </a>
 
             </li>
-            <li class="nav-item">
-                <a href="{{ route('users.index') }}"
-                    class="nav-link {{ request()->path() == '/userview' ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-users"></i>
-                    <p>
-                        Kelola User
-                        <i class="right fas fa-angle-right"></i>
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('kategoriview.index') }}"
-                    class="nav-link {{ request()->path() == '/kategori' ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-list"></i>
-                    <p>
-                        Kategori
-                        <i class="right fas fa-angle-right"></i>
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('laporanview.index') }}"
-                    class="nav-link {{ request()->path() == '/laporanview' ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-chart-pie"></i>
-                    <p>
-                        Laporan Anggota
-                        <i class="right fas fa-angle-right"></i>
-                    </p>
-                </a>
-            </li>
+            @if (session()->get('role') == 1)
+                <li class="nav-item">
+                    <a href="{{ route('users.index') }}"
+                        class="nav-link {{ request()->path() == '/userview' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Kelola User
+                            <i class="right fas fa-angle-right"></i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('kategoriview.index') }}"
+                        class="nav-link {{ request()->path() == '/kategori' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Kategori
+                            <i class="right fas fa-angle-right"></i>
+                        </p>
+                    </a>
+                </li>
+            @endif
 
-            <li class="nav-item">
-                <a href="{{ route('auth.logout') }}" class="nav-link">
-                    <i class="nav-icon fas fa-sign-out-alt"></i>
-                    <p>
-                        Logout
-                        <i class="right fas fa-angle-right"></i>
-                    </p>
-                </a>
-            </li>
+            @if (session()->get('role') == 1 || session()->get('role') == 2)
+                <li class="nav-item">
+                    <a href="{{ route('laporanview.index') }}"
+                        class="nav-link {{ request()->segment(1) == '/laporanview' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Laporan Anggota
+                            <i class="right fas fa-angle-right"></i>
+                        </p>
+                    </a>
+                </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('auth.logout') }}" class="nav-link">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <p>
+                            Logout
+                            <i class="right fas fa-angle-right"></i>
+                        </p>
+                    </a>
+                </li>
+            @endif
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

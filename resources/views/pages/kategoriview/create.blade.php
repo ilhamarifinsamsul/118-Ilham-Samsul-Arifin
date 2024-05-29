@@ -39,7 +39,6 @@
                                 New Kategori
                             </div>
                             <div class="card-body">
-                                <?= csrf_field() ?>
                                 <div class="form-group">
                                     <label for="nama_kategori">Kategori</label>
                                     <input type="text"

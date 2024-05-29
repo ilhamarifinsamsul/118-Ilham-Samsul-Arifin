@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use App\Models\Laporan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LaporanController extends Controller
@@ -14,6 +15,7 @@ class LaporanController extends Controller
     public function index()
     {
         $data = Laporan::all();
+
 
         return view('pages.laporanview.index', [
             'laporan' => $data
@@ -26,9 +28,11 @@ class LaporanController extends Controller
     public function create()
     {
         $kategori = Kategori::all();
+        $user = User::all();
 
         return view('pages.laporanview.create', [
-            'kategori' => $kategori
+            'kategori' => $kategori,
+            'user' => $user
         ]);
     }
 
@@ -40,6 +44,7 @@ class LaporanController extends Controller
         $payload = $request->all();
 
         $rules = [
+            'user_id' => 'required',
             'description' => 'required',
             'date' => 'required',
             'kategori_id' => 'required'
@@ -53,6 +58,7 @@ class LaporanController extends Controller
 
         $laporan = new Laporan();
 
+        $laporan->user_id = $payload['user_id'];
         $laporan->description = $payload['description'];
         $laporan->date = $payload['date'];
 
@@ -66,7 +72,6 @@ class LaporanController extends Controller
         $laporan->kategori_id = $payload['kategori_id'];
 
         $laporan->save();
-
 
         return redirect()->route('laporanview.index');
     }
@@ -90,10 +95,12 @@ class LaporanController extends Controller
     {
         $data = Laporan::find($id);
         $kategori = Kategori::all();
+        $user = User::all();
 
         return view('pages.laporanview.edit', [
             'data' => $data,
-            'kategori' => $kategori
+            'kategori' => $kategori,
+            'user' => $user
         ]);
     }
 
@@ -115,7 +122,7 @@ class LaporanController extends Controller
         $laporan->description = $payload['description'];
         $laporan->date = $payload['date'];
 
-        $laporan->kategori_id = $payload['kategori_id'];
+        // $laporan->kategori_id = $payload['kategori_id'];
 
         $laporan->save();
 

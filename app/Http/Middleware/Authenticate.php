@@ -20,9 +20,13 @@ class Authenticate
         }
 
         if ($role != null) {
-            if (session()->get('role') != $role) {
-                return redirect()->route('auth.login')->with('error', 'Anda Tidak Memiliki Akses');
+            $role = explode("|", $role);
+            foreach ($role as $r) {
+                if (session()->get('role') != $r) {
+                    return $next($request);
+                }
             }
+            return redirect()->route('auth.login')->with('error', 'Anda Tidak Memiliki Akses');
         }
         return $next($request);
     }

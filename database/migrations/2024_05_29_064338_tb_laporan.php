@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('tb_laporan', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained('users')->onUpdate('SET NULL')->onDelete('CASCADE');
             $table->string('description');
             $table->dateTime('date');
             $table->string('picture');

@@ -40,6 +40,23 @@
                             <div class="card-body">
 
                                 <div class="form-group">
+                                    <label for="user_id">Nama</label>
+                                    <select name="user_id" id="user_id"
+                                        class="form-control @error('user_id') is-invalid
+                                    @enderror">
+                                        @foreach ($user as $u)
+                                            <option value="{{ $u->id }}">{{ $u->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                @error('kategori_id')
+                                    <p class="text-danger">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
+
+                                <div class="form-group">
                                     <label for="description">Description</label>
                                     <input type="text"
                                         class="form-control @error('description') is-invalid
@@ -52,6 +69,7 @@
                                         {{ $message }}
                                     </p>
                                 @enderror
+
 
                                 <div class="form-group">
                                     <label for="date">Tanggal</label>

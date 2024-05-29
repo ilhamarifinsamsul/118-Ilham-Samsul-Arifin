@@ -43,6 +43,12 @@
                         <div class="card-body">
 
                             <div class="form-group">
+                                <label for="user_id">Nama</label>
+                                <input type="text" class="form-control" disabled name="user" id="user"
+                                    value="{{ $data['user']->name }}">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="description">Deskripsi Kegiatan</label>
                                 <input type="text" class="form-control" id="description" name="description"
                                     value="{{ $data['description'] }}" disabled>

@@ -70,19 +70,6 @@
                                 @enderror
 
                                 {{-- <div class="form-group">
-                                    <label for="picture">Dokumentasi</label>
-                                    <img src="{{ asset('/assets/upload/laporan/' . $data['picture']) }}" alt=""
-                                        width="120px">
-                                    <input type="file" class="form-control" id="picture" name="picture">
-                                </div>
-
-                                @error('picture')
-                                    <p class="text-danger">
-                                        {{ $message }}
-                                    </p>
-                                @enderror --}}
-
-                                <div class="form-group">
                                     <label for="kategori_id">Kategori Bencana</label>
                                     <select name="kategori_id" id="kategori_id"
                                         class="form-control @error('kategori_id') is-invalid
@@ -102,7 +89,7 @@
                                     <p class="text-danger">
                                         {{ $message }}
                                     </p>
-                                @enderror
+                                @enderror --}}
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <a href="{{ route('laporanview.index') }}" class="btn btn-secondary">Batal</a>

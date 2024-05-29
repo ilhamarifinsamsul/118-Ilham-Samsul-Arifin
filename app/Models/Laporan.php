@@ -12,11 +12,17 @@ class Laporan extends Model
     public $table = 'tb_laporan';
 
     protected $fillable = [
+        'user_id',
         'description',
         'date',
         'picture',
         'kategori_id',
     ];
+
+    function User()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 
     function Kategori()
     {

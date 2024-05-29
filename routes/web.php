@@ -27,7 +27,7 @@ Route::get('/login', function () {
     return view('pages.auth.login');
 })->name('auth.login');
 
-Route::controller(UserController::class)->middleware(["authenticate:1"])->prefix("userview")->name("users.")->group(function () {
+Route::controller(UserController::class)->middleware(["authenticate:1|2"])->prefix("userview")->name("users.")->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
     Route::get('/{id}', 'show')->name('show');
@@ -45,10 +45,10 @@ Route::get('/dashboard', function () {
 //     return view('pages.userview.index');
 // });
 
-Route::resource('kategoriview', KategoriController::class)->middleware(['authenticate:1']);
+Route::resource('kategoriview', KategoriController::class)->middleware(['authenticate:1|2']);
 
 
-Route::resource('laporanview', LaporanController::class)->middleware(['authenticate:1']);
+Route::resource('laporanview', LaporanController::class)->middleware(['authenticate:1|2']);
 
 
 // Route::get('/kategoriview', function () {

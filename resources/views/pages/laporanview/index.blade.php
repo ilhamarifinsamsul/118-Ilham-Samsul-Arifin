@@ -27,7 +27,8 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
-                    <a href="{{ route('laporanview.create') }}" class="btn btn-primary btn-sm mb-2">Input Laporan</a>
+                    <a href="{{ route('laporanview.create') }}" class="btn btn-primary btn-sm mb-2"><i
+                            class="fas fa-plus"></i>Input Laporan</a>
                     <div class="card">
                         <div class="card-header">
                             List
@@ -37,6 +38,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Nama</th>
                                         <th>Deskripsi Kegiatan</th>
                                         <th>Tanggal</th>
                                         <th>Dokumentasi</th>
@@ -51,6 +53,7 @@
                                     @foreach ($laporan as $d)
                                         <tr>
                                             <td>{{ $a++ }}</td>
+                                            <td>{{ $d->user->name }}</td>
                                             <td>{{ $d['description'] }}</td>
                                             <td>{{ $d['date'] }}</td>
                                             <td><img src="{{ asset('/assets/upload/laporan/' . $d['picture']) }}"

@@ -20,18 +20,19 @@ class AuthController extends Controller
         $user = User::where("email", $request->username)->orWhere("username", $request->username)->first();
 
         if ($user == null) {
-            return redirect()->back()->with('error', 'User Tidak ditemukan');
+            return redirect()->back()->with('error', 'User Tidak Ditemukan');
         }
 
         if (!Hash::check($request->password, $user->password)) {
-            return redirect()->back()->with('error', 'Password salah');
+            return redirect()->back()->with('error', 'Password Salah');
         }
 
         $request->session()->regenerate();
         $request->session()->put('isLogged', true);
         $request->session()->put('userId', $user->id);
         $request->session()->put('userName', $user->name);
-        $request->session()->put('role', strtolower($user->role_id));
+        $request->session()->put('role', $user->role_id);
+
 
         return redirect()->route('dashboard.index');
     }

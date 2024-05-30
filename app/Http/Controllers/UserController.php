@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::latest('id')->get();
 
         return view('pages.userview.index', [
             "users" => $users

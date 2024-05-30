@@ -22,7 +22,7 @@ class Authenticate
         if ($role != null) {
             $role = explode("|", $role);
             foreach ($role as $r) {
-                if (session()->get('role') != $r) {
+                if (session()->get('role') == $r) {
                     return $next($request);
                 }
             }

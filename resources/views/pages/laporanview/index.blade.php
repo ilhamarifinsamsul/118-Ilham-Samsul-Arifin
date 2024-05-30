@@ -27,8 +27,11 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
-                    <a href="{{ route('laporanview.create') }}" class="btn btn-primary btn-sm mb-2"><i
-                            class="fas fa-plus"></i>Input Laporan</a>
+                    @if (session()->get('role') != 1)
+                        <a href="{{ route('laporanview.create') }}" class="btn btn-primary btn-sm mb-2"><i
+                                class="fas fa-plus"></i>Input Laporan</a>
+                    @endif
+
                     <div class="card">
                         <div class="card-header">
                             List
@@ -66,13 +69,15 @@
                                                 <a class="btn btn-warning btn-sm mb-2"
                                                     href="{{ route('laporanview.edit', $d['id']) }}">
                                                     <i class="fas fa-pen-fancy"></i></a>
-                                                <form action="{{ route('laporanview.destroy', $d['id']) }}" method='post'
-                                                    enctype='multipart/form-data'>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm mb-2"><i
-                                                            class="fas fa-trash-alt"></i></button>
-                                                </form>
+                                                @if (session()->get('role') == 1)
+                                                    <form action="{{ route('laporanview.destroy', $d['id']) }}"
+                                                        method='post' enctype='multipart/form-data'>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm mb-2"><i
+                                                                class="fas fa-trash-alt"></i></button>
+                                                    </form>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
@@ -91,7 +96,7 @@
             responsive: true,
             "dom": 'Bflrtip',
             buttons: [
-                // 'copy', 'excel', 'pdf'
+                'copy', 'excel', 'pdf'
             ],
             "pageLength": 5,
             "lengthMenu": [

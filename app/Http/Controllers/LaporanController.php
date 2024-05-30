@@ -14,8 +14,12 @@ class LaporanController extends Controller
      */
     public function index()
     {
-        $data = Laporan::all();
 
+        if (session()->get('role') == 1) {
+            $data = Laporan::all();
+        } else {
+            $data = Laporan::where('user_id', session()->get('userId'))->get();
+        }
 
         return view('pages.laporanview.index', [
             'laporan' => $data

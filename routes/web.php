@@ -27,6 +27,10 @@ Route::get('/login', function () {
     return view('pages.auth.login');
 })->name('auth.login');
 
+Route::get('/getSession', function () {
+    return session()->all();
+});
+
 Route::controller(UserController::class)->middleware(["authenticate:1|2"])->prefix("userview")->name("users.")->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
@@ -46,7 +50,6 @@ Route::get('/dashboard', function () {
 // });
 
 Route::resource('kategoriview', KategoriController::class)->middleware(['authenticate:1|2']);
-
 
 Route::resource('laporanview', LaporanController::class)->middleware(['authenticate:1|2']);
 

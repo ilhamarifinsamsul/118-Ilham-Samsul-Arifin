@@ -52,19 +52,16 @@
                     @csrf
 
                     @if (session()->get('error'))
-                        <div class="alert text-white alert-danger alert-dismissible fade show" role="alert">
-                            <span class="alert-text">
-                                {{ session()->get('error') }}
-                            </span>
-                            <button type="button" class="btn-info" data-bs-dismiss="alert" aria-label="Close">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>{{ session()->get('error') }}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                     @endif
 
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" required name="username" placeholder="Email"
-                            autofocus>
+                        <input type="text" class="form-control" name="username" placeholder="Email" autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -72,7 +69,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" required name="password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>

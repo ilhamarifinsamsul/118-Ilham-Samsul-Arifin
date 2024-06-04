@@ -18,6 +18,7 @@ return new class extends Migration
             $table->dateTime('date');
             $table->string('picture');
             $table->foreignId('kategori_id')->nullable()->constrained('tb_kategori_bencana')->onUpdate('SET NULL')->onDelete('CASCADE');
+            $table->foreignId('status_id')->nullable()->constrained('status')->onUpdate('SET NULL')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

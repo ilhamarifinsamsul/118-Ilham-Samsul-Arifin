@@ -17,6 +17,7 @@ class Laporan extends Model
         'date',
         'picture',
         'kategori_id',
+        'status_id',
     ];
 
     function User()

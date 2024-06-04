@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use App\Models\Laporan;
+use App\Models\Status;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -34,9 +35,11 @@ class LaporanController extends Controller
         $kategori = Kategori::all();
         $user = User::all();
 
+
         return view('pages.laporanview.create', [
             'kategori' => $kategori,
-            'user' => $user
+            'user' => $user,
+
         ]);
     }
 
@@ -51,7 +54,7 @@ class LaporanController extends Controller
             'user_id' => 'required',
             'description' => 'required',
             'date' => 'required',
-            'kategori_id' => 'required'
+            'kategori_id' => 'required',
         ];
 
         if ($request->hasFile('picture')) {
@@ -74,6 +77,7 @@ class LaporanController extends Controller
         }
 
         $laporan->kategori_id = $payload['kategori_id'];
+        $laporan->status_id = 2;
 
         $laporan->save();
 
@@ -101,10 +105,11 @@ class LaporanController extends Controller
         $kategori = Kategori::all();
         $user = User::all();
 
+
         return view('pages.laporanview.edit', [
             'data' => $data,
             'kategori' => $kategori,
-            'user' => $user
+            'user' => $user,
         ]);
     }
 
@@ -125,6 +130,10 @@ class LaporanController extends Controller
 
         $laporan->description = $payload['description'];
         $laporan->date = $payload['date'];
+
+        if (session()->get('role') == 1) {
+            $laporan->status_id = $payload['status_id'];
+        }
 
         // $laporan->kategori_id = $payload['kategori_id'];
 

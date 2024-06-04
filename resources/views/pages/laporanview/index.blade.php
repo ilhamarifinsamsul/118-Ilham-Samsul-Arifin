@@ -46,6 +46,7 @@
                                         <th>Tanggal</th>
                                         <th>Dokumentasi</th>
                                         <th>Kategori</th>
+                                        <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -62,6 +63,13 @@
                                             <td><img src="{{ asset('/assets/upload/laporan/' . $d['picture']) }}"
                                                     alt="" width="120px"></td>
                                             <td>{{ $d->kategori->nama_kategori }}</td>
+                                            <td>
+                                                @if ($d['status_id'] == 1)
+                                                    <span class="badge badge-pill badge-success">{{ $d->status_id }}</span>
+                                                @else
+                                                    <span class="badge badge-pill badge-danger">{{ $d->status_id }}</span>
+                                                @endif
+                                            </td>
 
                                             <td>
                                                 <a href="{{ route('laporanview.show', $d['id']) }}"

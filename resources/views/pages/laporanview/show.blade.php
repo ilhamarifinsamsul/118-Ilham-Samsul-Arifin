@@ -72,6 +72,12 @@
                                     value="{{ $data['kategori']->nama_kategori }}">
                             </div>
 
+                            <div class="form-group">
+                                <label for="status_id">Status</label>
+                                <input type="text" class="form-control" disabled name="status" id="status"
+                                    value="{{ $data['status']->name }}">
+                            </div>
+
                         </div>
                     </div>
                 </div>

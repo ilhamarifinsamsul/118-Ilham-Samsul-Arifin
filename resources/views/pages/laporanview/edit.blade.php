@@ -69,6 +69,16 @@
                                     </p>
                                 @enderror
 
+                                @if (session()->get('role') == 1)
+                                    <div class="form-group">
+                                        <label for="status_id">Status</label>
+                                        <select class="form-control" name="status_id" id="status_id">
+                                            <option value="1">Verified</option>
+                                            <option value="2">Not Verified</option>
+                                        </select>
+                                    </div>
+                                @endif
+
                                 {{-- <div class="form-group">
                                     <label for="kategori_id">Kategori Bencana</label>
                                     <select name="kategori_id" id="kategori_id"
